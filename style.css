@@ -1,0 +1,50 @@
+.wordle-row {
+    margin-bottom: 15px;
+}
+
+.wordle-character {
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: 2px solid black;
+    display: inline-block;
+}
+
+
+#keyboard-first-row {
+    margin-bottom: 10px;
+}
+
+#keyboard-second-row {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#keyboard-third-row {
+    margin-left: 20px;
+}
+
+.single-key {
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 5px;
+    background-color: #dddddd;
+}
+
+.single-key:hover {
+    cursor: pointer;
+}
+
+.character-correct {
+    background-color: green;
+}
+
+.character-correct-position-wrong {
+    background-color: orange;
+}
+
+.character-wrong {
+    background-color: grey;
+}

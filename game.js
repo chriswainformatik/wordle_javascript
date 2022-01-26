@@ -13,6 +13,10 @@ class Game {
         this.word = "HELLO"
     }
 
+    setWord(word) {
+        this.word = word
+    }
+
     guess(guess) {
         var characters = new Array(guess.length)
         for (var i = 0; i < this.word.length; i++) {

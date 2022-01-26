@@ -6,6 +6,14 @@ let character_count = 5
 document.addEventListener('DOMContentLoaded', function () {
     createBlankWordle();
     createKeyboard();
+    document.getElementById("btn-set-word").addEventListener("click", function () {
+        var w = prompt("enter a 5-character word")
+        if (w.length != 5) {
+            alert("Word length was not 5. Word was not set.")
+        } else {
+            game.setWord(w.toUpperCase())
+        }
+    })
   }, false);
 
 
@@ -19,11 +27,15 @@ function createBlankWordle() {
     for (var i = 0; i < max_tries; i++) {
         var row_div = document.createElement("div")
         row_div.classList.add("wordle-row")
+        row_div.classList.add("d-flex")
+        row_div.classList.add("justify-content-center")
         row_div.id = "wordle-row-" + i
         for (var j = 0; j < character_count; j++) {
             var wordle_character_div = document.createElement("div")
             wordle_character_div.classList.add("wordle-character")
             wordle_character_div.id = "wordle-character-" + i + "-" + j
+            wordle_character_div.classList.add("fs-1")
+            wordle_character_div.classList.add("fw-bolder")
             row_div.appendChild(wordle_character_div)
             var wordle_character_input = document.createElement("input")
             wordle_character_input.type = "hidden"
@@ -41,6 +53,7 @@ function createKeyboard() {
         var key_div = document.createElement("div")
         key_div.innerHTML = item
         key_div.classList.add("single-key")
+        key_div.classList.add("fs-2")
         key_div.id = "key-" + item
         key_div.addEventListener("click", function () {
             enterCharacter(item)
@@ -53,6 +66,7 @@ function createKeyboard() {
         var key_div = document.createElement("div")
         key_div.innerHTML = item
         key_div.classList.add("single-key")
+        key_div.classList.add("fs-2")
         key_div.id = "key-" + item
         key_div.addEventListener("click", function () {
             enterCharacter(item)
@@ -60,11 +74,20 @@ function createKeyboard() {
         document.getElementById("keyboard-second-row").appendChild(key_div)
     })
 
+    var enter_div = document.createElement("div")
+    enter_div.innerHTML = "ENTER"
+    enter_div.classList.add("single-key")
+    enter_div.classList.add("fs-2")
+    enter_div.id = "key-" + "ENTER"
+    enter_div.addEventListener("click", testGuess)
+    document.getElementById("keyboard-third-row").appendChild(enter_div)
+
     keys_third_row = ["Y", "X", "C", "V", "B", "N", "M"]
     keys_third_row.forEach((item) => {
         var key_div = document.createElement("div")
         key_div.innerHTML = item
         key_div.classList.add("single-key")
+        key_div.classList.add("fs-2")
         key_div.id = "key-" + item
         key_div.addEventListener("click", function () {
             enterCharacter(item)
@@ -75,16 +98,10 @@ function createKeyboard() {
     var del_div = document.createElement("div")
     del_div.innerHTML = "DELETE"
     del_div.classList.add("single-key")
+    del_div.classList.add("fs-2")
     del_div.id = "key-" + "DELETE"
     del_div.addEventListener("click", deleteLastChar)
     document.getElementById("keyboard-third-row").appendChild(del_div)
-
-    var enter_div = document.createElement("div")
-    enter_div.innerHTML = "ENTER"
-    enter_div.classList.add("single-key")
-    enter_div.id = "key-" + "ENTER"
-    enter_div.addEventListener("click", testGuess)
-    document.getElementById("keyboard-third-row").appendChild(enter_div)
 }
 
 
@@ -130,6 +147,8 @@ function updateCharacterColors(word, resultArray) {
     resultArray.forEach((item, index) => {
         var wordle_div = document.getElementById("wordle-character-" + current_try + "-" + index)
         var key_div = document.getElementById("key-" + word[index])
+        wordle_div.classList.add("text-light")
+        key_div.classList.add("text-light")
         if (item == 1) {
             wordle_div.classList.add("character-correct")
             key_div.classList.remove("character-correct-position-wrong")

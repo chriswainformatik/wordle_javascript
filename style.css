@@ -3,12 +3,13 @@
 }
 
 .wordle-character {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     margin-left: 15px;
     margin-right: 15px;
     border: 2px solid black;
     display: inline-block;
+    text-align: center;
 }
 
 
@@ -17,12 +18,7 @@
 }
 
 #keyboard-second-row {
-    margin-left: 10px;
     margin-bottom: 10px;
-}
-
-#keyboard-third-row {
-    margin-left: 20px;
 }
 
 .single-key {
@@ -31,6 +27,8 @@
     margin-right: 15px;
     padding: 5px;
     background-color: #dddddd;
+    min-width: 40px;
+    text-align: center;
 }
 
 .single-key:hover {
@@ -39,12 +37,15 @@
 
 .character-correct {
     background-color: green;
+    border-color: green;
 }
 
 .character-correct-position-wrong {
     background-color: orange;
+    border-color: orange;
 }
 
 .character-wrong {
     background-color: grey;
+    border-color: grey;
 }

@@ -10,7 +10,7 @@ class Game {
     reset() {
         this.game_over = false
         this.remaining_tries = 6
-        this.word = "HELLO"
+        this.word = "TIRED"
     }
 
     setWord(word) {

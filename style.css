@@ -3,15 +3,14 @@
 }
 
 .wordle-character {
-    width: 60px;
-    height: 60px;
-    margin-left: 15px;
-    margin-right: 15px;
     border: 2px solid black;
     display: inline-block;
     text-align: center;
 }
 
+#keyboard-wrapper {
+    max-width: 960px;
+}
 
 #keyboard-first-row {
     margin-bottom: 10px;
@@ -23,11 +22,7 @@
 
 .single-key {
     display: inline-block;
-    margin-left: 15px;
-    margin-right: 15px;
-    padding: 5px;
     background-color: #dddddd;
-    min-width: 40px;
     text-align: center;
 }
 
@@ -48,4 +43,48 @@
 .character-wrong {
     background-color: grey;
     border-color: grey;
+}
+
+.confetti {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100vw;
+    display: none;
+    margin: 0 auto;
+    user-select: none;
+}
+
+/* small */
+@media screen {
+    .wordle-character {
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .single-key {
+        padding: 5px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+}
+
+/* big */
+@media screen and (min-width: 768px) {
+    .wordle-character {
+        width: 60px;
+        height: 60px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    
+    .single-key {
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 5px;
+        min-width: 40px;
+    }
 }

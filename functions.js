@@ -6,6 +6,7 @@ let character_count = 5
 document.addEventListener('DOMContentLoaded', function () {
     createBlankWordle();
     createKeyboard();
+    resizeElements();
     document.getElementById("btn-set-word").addEventListener("click", function () {
         var w = prompt("enter a 5-character word")
         if (w.length != 5) {
@@ -14,7 +15,49 @@ document.addEventListener('DOMContentLoaded', function () {
             game.setWord(w.toUpperCase())
         }
     })
-  }, false);
+}, false);
+
+
+window.addEventListener("resize", resizeElements)
+
+function resizeElements() {
+    var wordle_divs = document.getElementsByClassName("wordle-character")
+    var key_divs = document.getElementsByClassName("single-key")
+    if (this.window.innerWidth < 576) {
+        for (let item of wordle_divs) {
+            item.classList.remove("fs-1")
+            item.classList.remove("fs-2")
+            item.classList.add("fs-3")
+        }
+        for (let item of key_divs) {
+            item.classList.remove("fs-2")
+            item.classList.remove("fs-4")
+            //item.classList.add("fs-5")
+        }
+    } else if (window.innerWidth < 768) {
+        for (let item of wordle_divs) {
+            item.classList.remove("fs-1")
+            item.classList.add("fs-2")
+            item.classList.remove("fs-3")
+        }
+        for (let item of key_divs) {
+            item.classList.remove("fs-2")
+            item.classList.add("fs-4")
+            //item.classList.remove("fs-5")
+        }
+    } else {
+        for (let item of wordle_divs) {
+            item.classList.add("fs-1")
+            item.classList.remove("fs-2")
+            item.classList.remove("fs-3")
+        }
+        for (let item of key_divs) {
+            item.classList.add("fs-2")
+            item.classList.remove("fs-4")
+            item.classList.remove("fs-5")
+        }
+    }
+}
 
 
 var current_try = 0
@@ -123,13 +166,16 @@ function testGuess() {
         for (var i = 0; i < character_count; i++) {
             word += document.getElementById("wordle-character-input-" + current_try + "-" + i).value
         }
-        console.log(word)
+        //console.log(word)
         var result = game.guess(word)
-        console.log(result)
+        //console.log(result)
         updateCharacterColors(word, result)
-
-        current_character = 0
-        current_try++
+        if (result.every(elem => elem == 1)) {
+            doConfetti();
+        } else {
+            current_character = 0
+            current_try++
+        }
     }
 }
 

@@ -8,14 +8,17 @@
     </head>
     <body>
         <div id="wrapper" class="container mx-auto mt-4"><div id="wordle-wrapper"></div></div>
-        <div id="keyboard-wrapper" class="mt-4">
-            <div id="keyboard-first-row" class="d-flex justify-content-center"></div>
-            <div id="keyboard-second-row" class="d-flex justify-content-center"></div>
-            <div id="keyboard-third-row" class="d-flex justify-content-center"></div>
+        <div id="keyboard-wrapper" class="container-fluid mt-4">
+            <div id="keyboard-first-row" class="d-flex justify-content-evenly"></div>
+            <div id="keyboard-second-row" class="d-flex justify-content-evenly"></div>
+            <div id="keyboard-third-row" class="d-flex justify-content-evenly"></div>
         </div>
         <div id="button-wrapper" class="container mx-auto mt-4 d-flex justify-content-center">
-            <button id="btn-set-word" type="button" class="btn btn-secondary fs-2">Set word</button>
+            <button id="btn-set-word" type="button" class="btn btn-secondary fs-2 mx-4">Set word</button>
+            <button id="btn-reset" type="button" class="btn btn-secondary fs-2 mx-4">Reset</button>
         </div>
+        <canvas class="confetti" id="confetti-canvas"></canvas>
+        <script src="confetti.js"></script>
         <script src="game.js"></script>
         <script src="functions.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

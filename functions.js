@@ -7,6 +7,8 @@ let keys_first_row = ["Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "Ü"]
 let keys_second_row = ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä"]
 let keys_third_row = ["Y", "X", "C", "V", "B", "N", "M"]
 
+var modal_try_again = null
+
 /**
  * Initial setup of page
  */
@@ -22,9 +24,16 @@ document.addEventListener('DOMContentLoaded', function () {
             game.setWord(w.toUpperCase())
         }
     })
-    document.getElementById("btn-reset").addEventListener("click", function() {
-        window.location.reload();
+    var reset_buttons = document.getElementsByClassName("btn-reset");
+    [].forEach.call(reset_buttons, function (element) {
+        element.addEventListener("click", function() {
+            window.location.reload();
+        })
     })
+    modal_try_again = new bootstrap.Modal(document.getElementById('modal-try-again'), {
+        backdrop: 'static'
+    })
+    //modal_try_again.show()
 }, false);
 
 /**
@@ -170,8 +179,6 @@ function createKeyboard() {
 }
 
 function enterCharacter(character) {
-    console.log(current_try)
-    console.log(current_character)
     if (current_try < max_tries) {
         if (current_character < character_count) {
             document.getElementById("wordle-character-" + current_try + "-" + current_character).innerHTML = character
@@ -196,6 +203,9 @@ function testGuess() {
         } else {
             current_character = 0
             current_try++
+            if (current_try == max_tries) {
+                modal_try_again.show();
+            }
         }
     }
 }

@@ -15,9 +15,40 @@
         </div>
         <div id="button-wrapper" class="container mx-auto mt-4 d-flex justify-content-center">
             <button id="btn-set-word" type="button" class="btn btn-secondary fs-2 mx-4">Set word</button>
-            <button id="btn-reset" type="button" class="btn btn-secondary fs-2 mx-4">Reset</button>
+            <button id="btn-reset" type="button" class="btn btn-secondary fs-2 mx-4 btn-reset">Reset</button>
         </div>
         <canvas class="confetti" id="confetti-canvas"></canvas>
+
+        <div class="modal" id="modal-try-again" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!--  
+                <div class="modal-header">
+                  <h5 class="modal-title">Sorry...</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                -->
+                <div class="modal-body my-4">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="mx-4"><img src="frown-regular.svg" width="80" height="80"></div>
+                        <div class="fs-2"><div class="">Try again!</div></div>
+                    </div>                  
+                </div>
+                <div class="modal-footer mx-auto">
+                  <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                  <button type="button" class="btn btn-secondary fs-2 mx-4 btn-reset">Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!--
+        <div>
+            <div><img src="frown-regular.svg" width="50" height="50"></div>
+            <div>Try again!</div>
+        </div>
+        -->
+        <div>Emoji CC4.0 https://fontawesome.com/license</div>
         <script src="confetti.js"></script>
         <script src="game.js"></script>
         <script src="functions.js"></script>

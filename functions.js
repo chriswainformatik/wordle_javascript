@@ -3,6 +3,13 @@ let game = new Game();
 let max_tries = 6
 let character_count = 5
 
+let keys_first_row = ["Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "Ü"]
+let keys_second_row = ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä"]
+let keys_third_row = ["Y", "X", "C", "V", "B", "N", "M"]
+
+/**
+ * Initial setup of page
+ */
 document.addEventListener('DOMContentLoaded', function () {
     createBlankWordle();
     createKeyboard();
@@ -15,7 +22,25 @@ document.addEventListener('DOMContentLoaded', function () {
             game.setWord(w.toUpperCase())
         }
     })
+    document.getElementById("btn-reset").addEventListener("click", function() {
+        window.location.reload();
+    })
 }, false);
+
+/**
+ * Key Listener for keyboard input
+ */
+document.addEventListener("keyup", (event) => {
+    if (keys_first_row.includes(event.key.toUpperCase()) || keys_second_row.includes(event.key.toUpperCase()) || keys_third_row.includes(event.key.toUpperCase())) {
+        enterCharacter(event.key.toUpperCase())
+    }
+    if (event.key == 'Enter') {
+        testGuess()
+    }
+     if (event.key == 'Backspace') {
+        deleteLastChar()
+     }
+})
 
 
 window.addEventListener("resize", resizeElements)
@@ -91,7 +116,6 @@ function createBlankWordle() {
 }
 
 function createKeyboard() {
-    keys_first_row = ["Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "Ü"]
     keys_first_row.forEach((item) => {
         var key_div = document.createElement("div")
         key_div.innerHTML = item
@@ -104,7 +128,6 @@ function createKeyboard() {
         document.getElementById("keyboard-first-row").appendChild(key_div)
     })
 
-    keys_second_row = ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä"]
     keys_second_row.forEach((item) => {
         var key_div = document.createElement("div")
         key_div.innerHTML = item
@@ -125,7 +148,6 @@ function createKeyboard() {
     enter_div.addEventListener("click", testGuess)
     document.getElementById("keyboard-third-row").appendChild(enter_div)
 
-    keys_third_row = ["Y", "X", "C", "V", "B", "N", "M"]
     keys_third_row.forEach((item) => {
         var key_div = document.createElement("div")
         key_div.innerHTML = item
@@ -146,7 +168,6 @@ function createKeyboard() {
     del_div.addEventListener("click", deleteLastChar)
     document.getElementById("keyboard-third-row").appendChild(del_div)
 }
-
 
 function enterCharacter(character) {
     console.log(current_try)

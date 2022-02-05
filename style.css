@@ -45,6 +45,10 @@
     border-color: grey;
 }
 
+.btn {
+    z-index: 100;
+}
+
 .confetti {
     position: absolute;
     top: 50%;

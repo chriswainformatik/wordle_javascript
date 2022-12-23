@@ -2,6 +2,22 @@ class Game {
     game_over
     remaining_tries
     word
+    wordsList = [
+        "TIRED",
+        "HOUSE",
+        "BUILD",
+        "SLAVE",
+        "AFTER",
+        "DRIVE",
+        "GLOVE",
+        "TRUST",
+        "LEAVE",
+        "GUIDE",
+        "SHELF",
+        "ANGEL",
+        "CANDY",
+        "RUSTY"
+    ]
 
     constructor() {
         this.reset()
@@ -10,7 +26,7 @@ class Game {
     reset() {
         this.game_over = false
         this.remaining_tries = 6
-        this.word = "TIRED"
+        this.word = this.wordsList[Math.floor(Math.random() * this.wordsList.length)]
     }
 
     setWord(word) {

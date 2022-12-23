@@ -13,10 +13,12 @@ class Game {
         "TRUST",
         "LEAVE",
         "GUIDE",
-        "SHELF",
         "ANGEL",
         "CANDY",
-        "RUSTY"
+        "RUSTY",
+        "TRAIH",
+        "WHERE",
+        "SAXON"
     ]
 
     constructor() {

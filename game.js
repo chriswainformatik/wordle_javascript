@@ -69,8 +69,8 @@ class Game {
             var wChar = this.word.charAt(i)
             var gChar = guess.toUpperCase().charAt(i)
             if (this.word.includes(gChar) && wordCharCount[gChar] > 0) {
-                console.log(i + gChar)
                 characters[i] = 0
+                wordCharCount[gChar]--
             }
         }
 

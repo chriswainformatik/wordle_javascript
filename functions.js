@@ -248,8 +248,8 @@ function deleteLastChar() {
  *  [0, 1, 0, -1, -1]
  * (where -1 = grey, 0 = yellow and 1 = green)
  * 
- * @param {*} word The guessed word that has been entered
- * @param {*} resultArray The result array containing -1, 0 or 1 for each character
+ * @param {string} word The guessed word that has been entered
+ * @param {object} resultArray The result array containing -1, 0 or 1 for each character
  */
 function updateCharacterColors(word, resultArray) {
     resultArray.forEach((item, index) => {

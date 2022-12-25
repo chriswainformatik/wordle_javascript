@@ -54,6 +54,9 @@ document.addEventListener("keyup", (event) => {
 
 window.addEventListener("resize", resizeElements)
 
+/**
+ * Resize elements according to screen width making the site responsive.
+ */
 function resizeElements() {
     var wordle_divs = document.getElementsByClassName("wordle-character")
     var key_divs = document.getElementsByClassName("single-key")
@@ -97,7 +100,9 @@ function resizeElements() {
 var current_try = 0
 var current_character = 0
 
-
+/**
+ * Creates the 6 rows of 5-character words as DOM elements.
+ */
 function createBlankWordle() {
     var wrapper = document.getElementById("wordle-wrapper")
 
@@ -124,6 +129,9 @@ function createBlankWordle() {
     }
 }
 
+/**
+ * Creates the keyboard as DOM elements.
+ */
 function createKeyboard() {
     keys_first_row.forEach((item) => {
         var key_div = document.createElement("div")
@@ -178,6 +186,13 @@ function createKeyboard() {
     document.getElementById("keyboard-third-row").appendChild(del_div)
 }
 
+/**
+ * Enters a character if the max tries haven't been exceeded 
+ * and if you haven't already entered 5 characters.
+ * Invoked by pressing a character key or by clicking on a character button.
+ * 
+ * @param {string} character The character to be entered. Must be a 1-character string.
+ */
 function enterCharacter(character) {
     if (current_try < max_tries) {
         if (current_character < character_count) {
@@ -188,6 +203,10 @@ function enterCharacter(character) {
     }
 }
 
+/**
+ * Test the current guess if the user has entered 5 characters.
+ * Invoked by pressing the return key or by clicking the "Enter" button.
+ */
 function testGuess() {
     if (current_character == character_count) {
         var word = ""
@@ -210,7 +229,11 @@ function testGuess() {
     }
 }
 
-
+/**
+ * Delete the last character of the current guess 
+ * if the guess hasn't already been tested 
+ * and if there are more than 0 characters that have been entered.
+ */
 function deleteLastChar() {
     if (current_character > 0) {
         current_character--;
@@ -219,7 +242,15 @@ function deleteLastChar() {
     }
 }
 
-
+/**
+ * Update the color of each character according to the entered word and the result of Game.guess(word).
+ * The result array is of the following format:
+ *  [0, 1, 0, -1, -1]
+ * (where -1 = grey, 0 = yellow and 1 = green)
+ * 
+ * @param {*} word The guessed word that has been entered
+ * @param {*} resultArray The result array containing -1, 0 or 1 for each character
+ */
 function updateCharacterColors(word, resultArray) {
     resultArray.forEach((item, index) => {
         var wordle_div = document.getElementById("wordle-character-" + current_try + "-" + index)
